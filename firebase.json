@@ -1,0 +1,68 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "appAssociation": "AUTO",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/items-details/.*",
+        "dynamicLinks": true
+      },
+      {
+        "source": "/share/**",
+        "dynamicLinks": true
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/firebase/**",
+        "destination": "https://firebase.google.com/",
+        "type": 302
+      },
+      {
+        "source": "/firebase/.*",
+        "destination": "https://firebase.google.com/",
+        "type": 302
+      }
+    ],
+    "headers": [
+      {
+        "source": "404.html",
+        "headers": [ {
+          "key": "Cache-Control",
+          "value": "max-age=300"
+        } ]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "codebase": "authorized-https-endpoint",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+  }
+}
